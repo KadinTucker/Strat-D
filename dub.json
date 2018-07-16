@@ -1,0 +1,12 @@
+{
+	"name": "strat-d",
+	"authors": [
+		"Kadin Tucker"
+	],
+	"dependencies": {
+		"d2d": "~>1.6.3"
+	},
+	"description": "A library that allows for the creation of strategy games in the D language built off of d2d",
+	"copyright": "Copyright © 2018, Kadin Tucker",
+	"license": "MIT"
+}
