@@ -27,4 +27,30 @@ class World {
         }
     }
 
+    /**
+     * Gets the width of the world 
+     */
+    @property int width() {
+        return this._tiles.length;
+    }
+
+    /**
+     * Gets the height of the world
+     */
+    @property int height() {
+        return (this._tiles.length > 0)? this._tiles[0].length : 0;
+    }
+
+    /**
+     * Gets the tile at the given coordinate
+     * Returns null if the given coordinate is outside of the world
+     */
+    Tile getTileAt(Coordinate location) {
+        if(location.x >= this._tiles.length || location.x <= 0
+                || location.y >= this._tiles[location.x].length || location.y <= 0) {
+            return null;
+        }
+        return this._tiles[location.x][location.y];
+    }
+
 }

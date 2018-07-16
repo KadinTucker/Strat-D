@@ -19,4 +19,14 @@ class TileElement {
         this._tile = tile;
     }
 
+    /**
+     * Getter and setter properties
+     */ 
+    @property Tile tile() {
+        return this._tile;
+    }
+    @property void tile(Tile tile) {
+        this._tile = tile;
+    }
+
 }

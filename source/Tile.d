@@ -34,4 +34,25 @@ class Tile {
         this._world = world;
     }
 
+    /**
+     * Getter and setter properties
+     */ 
+    @property TileElement element() {
+        return this._element;
+    }
+    @property void element(TileElement element) {
+        this._element = element;
+    }
+
+    @property Coordinate location() {
+        return this._location;
+    }
+    @property void location(Coordinate location) {
+        this._location = location;
+    }
+
+    @property World world() {
+        return this._world;
+    }
+
 }
