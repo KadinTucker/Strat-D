@@ -22,7 +22,7 @@ class World {
         for(int x = 0; x < nrows; x++) {
             _tiles ~= null;
             for(int y = 0; y < ncols; y++) {
-                _tiles[x] ~= new Tile(new Coordinate(x, y), this);
+                _tiles[x] ~= new Tile(new Coordinate(x, y), this, null);
             }
         }
     }
@@ -46,11 +46,14 @@ class World {
      * Returns null if the given coordinate is outside of the world
      */
     Tile getTileAt(Coordinate location) {
-        if(location.x >= this._tiles.length || location.x <= 0
-                || location.y >= this._tiles[location.x].length || location.y <= 0) {
+        return this.getTileAt(location.x, location.y);
+    }
+
+    Tile getTileAt(int x, int y) {
+        if(x >= this._tiles.length || x <= 0 || y >= this._tiles[x].length || y <= 0) {
             return null;
         }
-        return this._tiles[location.x][location.y];
+        return this._tiles[x][y];
     }
 
 }

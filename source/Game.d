@@ -1,6 +1,5 @@
 module stratd.Game;
 
-import d2d;
 import stratd;
 
 /**

@@ -1,6 +1,5 @@
 module stratd.StratdComponent;
 
-import d2d;
 import stratd;
 
 /**
