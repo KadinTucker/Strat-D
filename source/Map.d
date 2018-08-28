@@ -21,7 +21,10 @@ class Map : StratdComponent {
     private World _world; ///The world this map is drawing
     private MapDrawMode _drawMode; ///The draw mode of the map (see enum above)
     private Tile _selectedTile; ///The selected tile on the map
-    private int tileScale; ///The scale of the tiles on the map in px
+
+    int tileScale; ///The scale of the tiles on the map in px
+    iVector pan; ///The pan of the map on the screen
+    double isometricAngle; ///The angle of observation of the map; only used in isometric draw mode
 
     /**
      * Constructs a new map in the given d2d display
@@ -55,6 +58,16 @@ class Map : StratdComponent {
     }
     @property void selectedTile(Tile selected) {
         this._selectedTile = selected;
+    }
+
+    override void draw() {
+        this.container.renderer.drawColor = this._bgColor;
+        this.container.renderer.clear();
+        this.container.renderer.drawColor = Color(0, 0, 0);
+        if(this.drawTexture !is null) {
+            this.container.renderer.copy(this.drawTexture, this.location.initialPoint.x + this.pan.x, 
+                    this.location.initialPoint.y + this.pan.y);
+        }
     }
 
     /**
