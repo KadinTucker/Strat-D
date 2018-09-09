@@ -9,6 +9,7 @@ abstract class Game : Activity {
 
     private World _world; ///The world used by the game
     private Map _map; ///The map component on the screen
+    private Query _query; ///The query currently active
     
     /**
      * Constructs a new game in the given display and using the given world
@@ -22,11 +23,19 @@ abstract class Game : Activity {
      * Handles events,
      * if the window is resized update components to compensate
      * Should be overridden
+     * Tries to fulfill currently active query
      */
     override void handleEvent(SDL_Event event) {
         if(event.type == SDL_WINDOWEVENT) {
             if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
                 this.updateComponents();
+            }
+        }
+        if(this._query !is null) {
+            if(this.cancelQuery(event)) {
+                this._query.cancel();
+            } else {
+                this._query.ask(event);
             }
         }
     }
@@ -41,6 +50,13 @@ abstract class Game : Activity {
             }
         }
     }
+
+    /**
+     * Defines what determines whether a query is cancelled
+     * Must be defined by game overrider
+     * Returns whether or not the query should be cancelled
+     */
+    abstract bool cancelQuery(SDL_Event event);
 
     /**
      * Runs when the game starts

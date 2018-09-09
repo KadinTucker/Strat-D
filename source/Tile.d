@@ -23,7 +23,7 @@ class Coordinate {
  */
 class Tile {
 
-    private TileElement _element; ///An element that may be contained on this tile; if empty, this is null
+    private TileElement[] _elements; ///The list of elements present on this tile; TODO: make tile element types a thing?
     private Coordinate _location; ///The coordinate location of the tile
     private World _world; ///The world in which the tile is found
     private Surface _image; ///The image with which to draw the tile
@@ -40,11 +40,11 @@ class Tile {
     /**
      * Getter and setter properties
      */ 
-    @property TileElement element() {
-        return this._element;
+    @property TileElement[] elements() {
+        return this._elements;
     }
-    @property void element(TileElement element) {
-        this._element = element;
+    @property void elements(TileElement[] elements) {
+        this._elements = elements;
     }
 
     @property Coordinate location() {
