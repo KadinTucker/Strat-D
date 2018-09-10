@@ -1,6 +1,7 @@
 module stratd;
 
 public import d2d;
+public import stratd.Action;
 public import stratd.Game;
 public import stratd.Map;
 public import stratd.Query;

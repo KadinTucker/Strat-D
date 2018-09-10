@@ -20,6 +20,13 @@ abstract class Game : Activity {
     }
 
     /**
+     * Sets the query to be the given query
+     */
+    void setQuery(Query query) {
+        this._query = query;
+    }
+
+    /**
      * Handles events,
      * if the window is resized update components to compensate
      * Should be overridden
