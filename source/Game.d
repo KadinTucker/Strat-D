@@ -7,23 +7,23 @@ import stratd;
  */
 abstract class Game : Activity {
 
-    private World _world; ///The world used by the game
-    private Map _map; ///The map component on the screen
-    private Query _query; ///The query currently active
+    World world; ///The world used by the game
+    Map map; ///The map component on the screen
+    Query query; ///The query currently active
     
     /**
      * Constructs a new game in the given display and using the given world
      */
     this(Display container, World world) {
         super(container);
-        this._world = world;
+        this.world = world;
     }
 
     /**
      * Sets the query to be the given query
      */
     void setQuery(Query query) {
-        this._query = query;
+        this.query = query;
     }
 
     /**
@@ -38,11 +38,11 @@ abstract class Game : Activity {
                 this.updateComponents();
             }
         }
-        if(this._query !is null) {
+        if(this.query !is null) {
             if(this.cancelQuery(event)) {
-                this._query.cancel();
+                this.query.cancel();
             } else {
-                this._query.ask(event);
+                this.query.ask(event);
             }
         }
     }
